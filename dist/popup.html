@@ -1,24 +1,64 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Job Finder</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="popup.css" />
 </head>
 <body>
-  <div class="container">
-    <h3>Job Finder</h3>
-    <textarea id="resumeText" placeholder="Paste resume text here"></textarea>
-    <div>
-      <input id="resumeFile" type="file" accept="application/pdf" />
-      <button id="saveProfileBtn">Parse & Save Profile</button>
-    </div>
-    <div>
-      <button id="scrapeTabBtn">Scan current tab for jobs</button>
-      <button id="getSummaryBtn">Show matched jobs</button>
-    </div>
-    <div id="jobsList">No results yet.</div>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 1 18 0A9 9 0 0 1 3 12z"></path></svg>
+        <div>
+          <h1>Job Finder</h1>
+          <p class="tagline">Match jobs to your resume — faster.</p>
+        </div>
+      </div>
+      <div class="profile-preview" id="profilePreview">No profile</div>
+    </header>
+
+    <main class="main">
+      <section class="profile-section card">
+        <label for="resumeText" class="field-label">Paste resume text</label>
+        <textarea id="resumeText" placeholder="Paste resume text here"></textarea>
+
+        <div class="row">
+          <label class="file-label">
+            <input id="resumeFile" type="file" accept="application/pdf" />
+            <span class="file-btn">Choose PDF</span>
+            <span id="fileName" class="file-name">No file selected</span>
+          </label>
+          <button id="saveProfileBtn" class="btn primary">Parse & Save Profile</button>
+        </div>
+      </section>
+
+      <section class="actions card">
+        <div class="row">
+          <button id="scrapeTabBtn" class="btn">Scan current tab</button>
+          <button id="getSummaryBtn" class="btn accent">Show matched jobs</button>
+          <div id="loader" class="loader" title="Working..." hidden></div>
+        </div>
+        <div class="hint">Tip: visit a LinkedIn/Indeed/Glassdoor jobs page and click "Scan current tab".</div>
+      </section>
+
+      <section class="results card">
+        <div class="results-header">
+          <h2>Matched jobs</h2>
+          <div id="jobCount" class="badge">—</div>
+        </div>
+        <div id="jobsList" class="jobs-grid">
+          <div class="empty">No results yet. Run a scan or save a profile to start.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Built for fast job discovery • <a id="openStore" href="#" target="_blank">Learn more</a></small>
+    </footer>
   </div>
+
   <script type="module" src="popup.js"></script>
 </body>
 </html>

@@ -4,15 +4,19 @@
   "description": "This is a job finder extension for Google Chrome",
   "main": "popup.js",
   "scripts": {
-    "build": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
-    "watch": "esbuild src/popup.js src/background.js src/contentScript.js --outdir=dist --bundle --watch --platform=browser --target=es2017"
+    "clean": "rimraf dist",
+    "build:js": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
+    "copy:static": "cpx \"src/manifest.json\" dist && cpx \"src/*.html\" dist && cpx \"src/*.css\" dist && cpx \"src/assets/**/*\" dist/assets",
+    "build": "npm run clean && npm run build:js && npm run copy:static"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "esbuild": "^0.25.9"
+    "cpx": "^1.5.0",
+    "esbuild": "^0.25.9",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "fuse.js": "^7.1.0"
