@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Job Finder</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <h3>Job Finder</h3>
+    <textarea id="resumeText" placeholder="Paste resume text here"></textarea>
+    <div>
+      <input id="resumeFile" type="file" accept="application/pdf" />
+      <button id="saveProfileBtn">Parse & Save Profile</button>
+    </div>
+    <div>
+      <button id="scrapeTabBtn">Scan current tab for jobs</button>
+      <button id="getSummaryBtn">Show matched jobs</button>
+    </div>
+    <div id="jobsList">No results yet.</div>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

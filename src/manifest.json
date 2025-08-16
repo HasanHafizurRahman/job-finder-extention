@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Job Finder — Resume-based Job Search",
+  "version": "0.1.0",
+  "description": "Scan job listing pages and find jobs that match your resume.",
+  "permissions": ["storage","scripting","activeTab","tabs"],
+  "host_permissions": ["*://*.indeed.com/*","*://*.linkedin.com/*","*://*.glassdoor.com/*"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Job Finder" },
+  "content_scripts": [{
+    "matches": ["*://*.indeed.com/*","*://*.linkedin.com/*","*://*.glassdoor.com/*"],
+    "js": ["contentScript.js"],
+    "run_at": "document_idle"
+  }]
+}

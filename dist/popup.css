@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; width: 360px; padding: 12px; }
+textarea { width:100%; height: 100px; margin:8px 0; }
+button { margin:6px 4px 6px 0; }
+.job { border-bottom: 1px solid #eee; padding:8px 0; }
