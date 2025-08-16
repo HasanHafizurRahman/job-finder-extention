@@ -2,7 +2,7 @@
   "name": "job-finder-extension",
   "version": "1.0.0",
   "description": "This is a job finder extension for Google Chrome",
-  "main": "index.js",
+  "main": "popup.js",
   "scripts": {
     "build": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
     "postbuild": "cpy \"src/manifest.json\" \"src/popup.html\" \"src/popup.css\" \"src/icons/*\" dist --flat",
