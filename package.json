@@ -5,7 +5,6 @@
   "main": "popup.js",
   "scripts": {
     "build": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
-    "postbuild": "cpy \"src/manifest.json\" \"src/popup.html\" \"src/popup.css\" \"src/icons/*\" dist --flat",
     "watch": "esbuild src/popup.js src/background.js src/contentScript.js --outdir=dist --bundle --watch --platform=browser --target=es2017"
   },
   "keywords": [],
@@ -13,11 +12,9 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "cpy-cli": "^6.0.0",
     "esbuild": "^0.25.9"
   },
   "dependencies": {
-    "fuse.js": "^7.1.0",
-    "pdfjs-dist": "^5.4.54"
+    "fuse.js": "^7.1.0"
   }
 }

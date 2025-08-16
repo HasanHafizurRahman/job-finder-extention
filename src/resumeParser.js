@@ -1,13 +1,21 @@
-export function parseTextResume(text){
-  const skills = [];
-  const SKILLS = ["javascript","react","node","css","html","typescript"];
-  const lower = (text||"").toLowerCase();
-  SKILLS.forEach(s => { if(lower.includes(s)) skills.push(s); });
-  const yearsMatch = lower.match(/(\d+)\s+years?/);
-  return { rawText: text, skills, yearsExperience: yearsMatch ? parseInt(yearsMatch[1],10) : null, probableTitle: (lower.match(/frontend|developer|engineer/)||[""])[0] };
+const SKILLS_DB = [
+  "javascript","typescript","react","next.js","redux","tailwind","html","css",
+  "node.js","express","graphql","git","jest","webpack","vite","sass","mongodb","postgresql"
+];
+
+export function parsePdfFile(file){
+  // fallback: return a simple profile so uploads don't break the flow
+  return Promise.resolve(parseTextResume("Uploaded file: " + (file.name || "file")));
 }
-export async function parsePdfFile(file){ // very simple: return empty text if user doesn't want pdfjs yet
-  // if you later want PDF parsing, we can add pdfjs-dist and full parser
-  const text = "PDF upload: filename "+file.name;
-  return parseTextResume(text);
+
+export function parseTextResume(text){
+  const lower = (text||"").toLowerCase();
+  const skills = SKILLS_DB.filter(s => lower.includes(s.toLowerCase()));
+  const yearsMatch = lower.match(/(\d+)\s+years?/);
+  return {
+    rawText: text,
+    skills,
+    yearsExperience: yearsMatch ? parseInt(yearsMatch[1],10) : null,
+    probableTitle: (lower.match(/frontend|developer|engineer|full[-\s]*stack/)||[""])[0]
+  };
 }
