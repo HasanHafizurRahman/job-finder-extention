@@ -59,6 +59,29 @@
     </footer>
   </div>
 
+  <!-- Summary modal (hidden by default) -->
+  <div id="summaryModal" class="modal" hidden>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-header">
+        <div>
+          <h3 id="modalTitle">Job summary</h3>
+          <div id="modalMeta" class="modal-meta"></div>
+        </div>
+        <button id="modalCloseBtn" class="btn">Close</button>
+      </header>
+
+      <div class="modal-body" id="modalBody">
+        <!-- summary content injected here -->
+      </div>
+
+      <footer class="modal-footer">
+        <button id="modalOpenJob" class="btn primary">Open job</button>
+        <button id="modalCopy" class="btn">Copy summary</button>
+      </footer>
+    </div>
+  </div>
+
   <script type="module" src="popup.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
   "main": "popup.js",
   "scripts": {
     "clean": "rimraf dist",
-    "build:js": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
+    "build:js": "esbuild src/popup.js src/background.js src/contentScript.js src/resumeParser.js src/jobMatcher.js src/utils.js src/summarizer.js --outdir=dist --bundle --minify --platform=browser --target=es2017",
     "copy:static": "cpx \"src/manifest.json\" dist && cpx \"src/*.html\" dist && cpx \"src/*.css\" dist && cpx \"src/assets/**/*\" dist/assets",
     "build": "npm run clean && npm run build:js && npm run copy:static"
   },

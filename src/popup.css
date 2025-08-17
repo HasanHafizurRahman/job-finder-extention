@@ -34,6 +34,10 @@ body{
 
 .main{display:flex;flex-direction:column;gap:10px}
 
+.modal[hidden] {
+  display: none !important;
+}
+
 /* cards */
 .card{
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
@@ -109,3 +113,22 @@ textarea{
 /* scrollbar (small, subtle) */
 .jobs-grid::-webkit-scrollbar{width:8px}
 .jobs-grid::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.03);border-radius:10px}
+
+/* --- Modal styles --- */
+.modal { position: fixed; inset: 0; display:flex;align-items:center;justify-content:center; z-index:9999; }
+.modal-backdrop{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(1,6,12,0.6), rgba(1,6,12,0.85)); backdrop-filter: blur(4px); }
+.modal-panel{
+  position:relative; width:100%; max-width:560px; max-height:80vh; overflow:auto;
+  border-radius:12px; padding:12px; z-index:2;
+  background: linear-gradient(180deg, rgba(12,18,28,0.94), rgba(6,10,18,0.96));
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 18px 60px rgba(2,6,23,0.7);
+}
+.modal-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.modal-header h3{margin:0;font-size:16px}
+.modal-meta{font-size:12px;color:var(--muted)}
+.modal-body{font-size:13px;color:#eaf4ff;line-height:1.4}
+.modal-body .section{margin:10px 0;padding:8px;border-radius:8px;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.02)}
+.modal-body .bullets{margin:6px 0 0 18px;}
+.modal-body .skill-pill{display:inline-block;margin:4px 6px 4px 0;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.02);font-weight:700}
+.modal-footer{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
